@@ -1,0 +1,34 @@
+<ion-button id="open-modal" title="Lista de clientes" shape="round" color="main-color" (click)="updateTable()">
+  <ion-icon name="list"></ion-icon>
+</ion-button>
+<ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-searchbar placeholder="Search" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+        <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list *ngFor="let row of rows | filter: filterTerm">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{row.firstname}}</h2>
+            <p>{{row.dni}}</p>
+          </ion-label>
+          <ion-button shape="round" title="Borrar cliente" color="danger" (click)="deleteClient(row.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+          <ion-button shape="round" title="Editar cliente" color="warning" (click)="currentClient(row.id)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

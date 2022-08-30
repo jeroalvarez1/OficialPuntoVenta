@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="main-color">
+    <ion-title>  
+      <ion-breadcrumb>
+        <ion-icon class="fs-1" color="light" slot="start" name="cart-outline"></ion-icon>
+        <ion-label class="fs-4" color="light">Punto de Venta</ion-label>
+      </ion-breadcrumb>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6" size-lg="4">
+        <ion-card color="grey">
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="auto">
+                  <ion-card-title class="fs-2">Iniciar Sesion</ion-card-title>
+                </ion-col>
+              </ion-row>
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="formularioLogin">
+                <ion-row>
+                  <ion-col>
+                    <ion-item fill="outline">
+                      <ion-label position="floating">Email</ion-label>
+                      <ion-input formControlName="email" type="email"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item fill="outline">
+                      <ion-label position="floating">Contraseña</ion-label>
+                      <ion-input formControlName="password" type="password"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-button expand="block" (click)="login()" color="main-color"><ion-icon name="log-in-outline" slot="start"></ion-icon>Iniciar sesion</ion-button>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div class="horizontalLine"></div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-text-center main-color-font" size="auto">
+                    <p class="pointer" [routerLink]="['/register']">¿Aun no tienes cuenta?</p>
+                    <p class="pointer" [routerLink]="['./lost-password']">¿Has olvidado tu contraseña?</p>
+                  </ion-col>
+                </ion-row>
+              </form>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

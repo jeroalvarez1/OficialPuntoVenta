@@ -1,0 +1,7 @@
+{
+  "name": "PuntoVentaOficial",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

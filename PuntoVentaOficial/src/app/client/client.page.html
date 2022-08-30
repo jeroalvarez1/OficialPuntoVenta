@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formAddClient">
+    <ion-card>
+      <ion-card-content>
+        <ion-row class="ion-align-items-center fs-2">
+          <ion-col>
+            Cliente
+          </ion-col>
+          <ion-col>
+            <ion-row class="ion-justify-content-end">
+              <ion-col size="auto">
+                <app-client-list></app-client-list>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item fill="outline">
+              <ion-label position="floating">Nombre del Cliente</ion-label>
+              <ion-input formControlName="firstname"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item fill="outline">
+              <ion-label position="floating">Apellido</ion-label>
+              <ion-input formControlName="lastname"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item fill="outline">
+              <ion-label position="floating">Cuit / Cuil / DNI</ion-label>
+              <ion-input formControlName="dni"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item fill="outline">
+              <ion-label position="floating">Domicilio</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item fill="outline">
+              <ion-label position="floating">Razón Social</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>Seleccione un tipo de factura</ion-card-subtitle>
+            <ion-list>
+              <ion-item fill="outline">
+                <ion-select [compareWith]="compareWith" placeholder="Seleccione tipo de Factura"
+                  (ionChange)="handleChange($event)">
+                  <ion-select-option *ngFor="let factura of facturas" [value]="factura">{{ factura.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-card-subtitle>Seleccione si tiene cuenta corriente</ion-card-subtitle>
+            <ion-list>
+              <ion-item fill="outline">
+                <ion-select [compareWith]="compareWith" placeholder="Seleccione tipo de Cuenta"
+                  (ionChange)="handleChange($event)">
+                  <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta" required>{{ cuenta.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row class="justify-content-center justify-content-sm-center justify-content-md-end">
+          <ion-col size="auto">
+            <ion-button shape="round" title="Agregar cliente" (click)="createClient()">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button shape="round" title="Editar cliente" color="warning" (click)="updateClient()">
+              <ion-icon name="pencil-outline"></ion-icon>
+            </ion-button>
+            <ion-button shape="round" title="Save" color="success">
+              Guardar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+      <ion-item-sliding class="resClient" id="item100">
+        <ion-item href="#">
+          <ion-label>
+            <h2>Cliente: Jero Alvarez</h2>
+            <p>Cuenta corriente : 3.000$</p>
+            <p>Tipo de Factura: A</p>
+          </ion-label>
+          <ion-note slot="end">
+            10:45 AM
+          </ion-note>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-card>
+  </form>
+
+</ion-content>
