@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngFor="let row of rows | filter: filterTerm">
+    <ion-item button>
+      <ion-avatar slot="start" class="border border-dark">
+        <ion-img
+          src="https://mundoabarrotes.com/wp-content/uploads/2019/09/Fideo-Molitalia-spaghetti-20-unidades-500-gramos-arriba.webp">
+        </ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2><b>Nombre:</b> {{row.category}} {{row.name}}</h2>
+        <p><b>Cod.Barra:</b> {{row.cod}}</p>
+        <p><b>Cantidad:</b> {{row.amount}}</p>
+      </ion-label>
+      <ion-button *ngIf="actionValue == 3" shape="round" title="Borrar cliente" color="danger">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+          <!--
+          <ion-button shape="round" title="Editar cliente" color="warning" (click)="currentClient(row.id)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-button>-->
+    </ion-item>
+  </ion-list>
+  <p>{{actionValue}}</p>
+</ion-content>

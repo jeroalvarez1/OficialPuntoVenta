@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { ClientListComponent } from "./client-components/client-list/client-list.component";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ProductListComponent } from "./products-components/product-list/product-list.component";
 
 
 @NgModule({
   declarations: [
-    ClientListComponent
+    ClientListComponent,
+    ProductListComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng2SearchPipeModule
   ],
   exports: [
-    ClientListComponent
+    ClientListComponent,
+    ProductListComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

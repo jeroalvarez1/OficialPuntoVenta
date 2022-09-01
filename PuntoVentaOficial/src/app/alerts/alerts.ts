@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ProductsService } from '../logic/services/products/products.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertsService {
 
-  constructor(private alertController: AlertController) {  }
+  constructor(private alertController: AlertController, private productsService: ProductsService) {  }
 
   async emptyForm(){
     const alert = await this.alertController.create({
@@ -38,4 +39,35 @@ export class AlertsService {
     return;
   }
 
+  async choiseProductoAction() {
+    const alert = await this.alertController.create({
+      header: '¿Que desea hacer?',
+      buttons: [
+        {
+          text: 'Actualizar Stock',
+          handler: () => {
+            this.productsService.actionInProduct = 1;
+          },
+        },
+        {
+          text: 'Actualizar Precios',
+          handler: () => {
+            this.productsService.actionInProduct = 2;
+          },
+        },
+        {
+          text: 'Editar Producto',
+          handler: () => {
+            this.productsService.actionInProduct = 3;
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+  }
+  
+
+  //fecha y nombre de usaurio
 }
