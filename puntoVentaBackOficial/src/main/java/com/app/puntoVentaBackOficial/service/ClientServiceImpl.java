@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-    //DTO = JSON
-    //List = JSON
     @Autowired
     private ClientRepository clientRepository;
 
